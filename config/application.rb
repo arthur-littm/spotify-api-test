@@ -22,3 +22,5 @@ module SpotifyApiTest
     # the framework and any gems in your application.
   end
 end
+
+RSpotify::authenticate("<your_client_id>", "<your_client_secret>")

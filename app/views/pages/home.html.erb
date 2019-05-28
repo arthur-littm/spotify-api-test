@@ -1,2 +1,32 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <h3>Song search</h3>
+  <%= form_tag root_path, :method => 'get', remote: true do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+  <% end %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Artist</th>
+        <th scope="col">Spotify ID</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @results.each do |song| %>
+        <tr>
+          <th scope="row"><%= song.name %></th>
+          <td><%= song.artists.first.name %></td>
+          <td><%= song.uri %></td>
+          <td><%= link_to "Add", "#"  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+</div>
